@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Nutrition for Mas Farhan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f3e8ff, #e0f2ff);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: #c8a2ff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #a87fff;
+}
+
+.hidden-message {
+  margin-top: 20px;
+  display: none;
+  font-weight: 500;
+  color: #6a4caf;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Daily Nutrition 🤍<br>for Mas Farhan</h1>
+
+  <p>Mas,</p>
+
+  <p>
+  Ini cuma pengingat kecil di tengah hari yang mungkin terasa panjang banget.
+  Aku tahu akhir-akhir ini kerjaan lagi berat. Capeknya bukan cuma fisik,
+  tapi juga pikiran. Ada tekanan, ada ekspektasi, ada tanggung jawab
+  yang nggak kecil. Dan kamu tetap jalanin semuanya.
+  </p>
+
+  <p>
+  Makasih ya, Mas.
+  Makasih udah tetap tanggung jawab walau lagi lelah.
+  Makasih udah tetap profesional walau kepala rasanya penuh.
+  Makasih karena kamu tetap berusaha, bahkan di hari-hari
+  yang rasanya pengen berhenti sebentar.
+  </p>
+
+  <p>
+  Kalau hari ini terasa melelahkan, itu bukan berarti kamu kurang.
+  Itu cuma tanda kalau kamu lagi berjuang.
+  Dan orang yang berjuang pantas istirahat.
+  </p>
+
+  <p>
+  Jangan lupa ya, nilai kamu nggak ditentukan dari seberapa produktif kamu hari ini.
+  Kamu tetap berarti, tetap cukup, tetap keren — bahkan saat kamu lagi capek.
+  </p>
+
+  <p>
+  Kalau semuanya terasa terlalu ramai, pelan-pelan aja.
+  Ambil napas. Turunin bahu yang tegang.
+  Dunia nggak runtuh kok kalau kamu pause sebentar.
+  </p>
+
+  <p>
+  Mas Farhan, you’re doing better than you think.
+  Dan aku bangga sama kamu — bukan cuma karena apa yang kamu capai,
+  tapi karena siapa kamu.
+  </p>
+
+  <button onclick="showMessage()">Click when you need extra strength 🤍</button>
+
+  <div class="hidden-message" id="extraMessage">
+    Istirahat kalau lelah ya, Mas.
+    Kamu nggak sendirian.
+  </div>
+
+  <!-- Tambahin file tulus-diri.mp3 di folder yang sama kalau mau lagu jalan -->
+  <audio autoplay loop>
+    <source src="tulus-diri.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+<script>
+function showMessage() {
+  document.getElementById("extraMessage").style.display = "block";
+}
+</script>
+
+</body>
+</html>
