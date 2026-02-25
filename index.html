@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Nutrition</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  background:linear-gradient(135deg,#1e1b2e,#2b2344);
+  font-family:'Poppins',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  color:#f3eaff;
+  overflow:hidden;
+}
+
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:40px;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.page.active{
+  opacity:1;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+}
+
+button{
+  padding:14px 28px;
+  border-radius:40px;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  margin:15px;
+  transition:0.3s;
+}
+
+#tiredBtn{
+  background:#c8a2ff;
+  color:white;
+}
+
+#notTiredBtn{
+  background:#ff8fb1;
+  color:white;
+  position:absolute;
+}
+
+#teaseText{
+  margin-top:20px;
+  font-style:italic;
+  font-size:18px;
+  opacity:0;
+  transition:0.5s;
+}
+
+.show{
+  opacity:1;
+}
+
+#letterText{
+  max-width:700px;
+  line-height:1.9;
+  font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>Mas Farhan…</h1>
+  <p>Kamu capek?</p>
+
+  <button id="tiredBtn">Capek</button>
+  <button id="notTiredBtn">Enggak capek</button>
+
+  <div id="teaseText"></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>Untuk Mas Farhan</h1>
+  <p id="letterText"></p>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgm" loop>
+  <source src="tulus-diri.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const tiredBtn = document.getElementById("tiredBtn");
+const notTiredBtn = document.getElementById("notTiredBtn");
+const teaseText = document.getElementById("teaseText");
+const bgm = document.getElementById("bgm");
+
+let attempt = 0;
+
+// Tombol Enggak capek kabur
+notTiredBtn.addEventListener("mouseover", moveButton);
+notTiredBtn.addEventListener("click", moveButton);
+
+function moveButton(){
+  attempt++;
+
+  const x = Math.random() * (window.innerWidth - 150);
+  const y = Math.random() * (window.innerHeight - 80);
+  notTiredBtn.style.left = x + "px";
+  notTiredBtn.style.top = y + "px";
+
+  teaseText.classList.add("show");
+
+  if(attempt < 5){
+    teaseText.innerText = "yakin?";
+  } else {
+    teaseText.innerText = "jujur aja…";
+  }
+}
+
+// Klik Capek → fade transition
+tiredBtn.addEventListener("click", () => {
+  page1.classList.remove("active");
+
+  setTimeout(() => {
+    page2.classList.add("active");
+    bgm.play(); // musik mulai di page 2
+    typeLetter();
+  }, 1000);
+});
+
+function typeLetter(){
+  const text = `
+Mas,
+
+Terima kasih sudah jujur memilih capek.
+
+Aku tahu kamu sering mencoba terlihat kuat.
+Sering bilang semuanya aman.
+Padahal mungkin tidak selalu begitu.
+
+Kamu tidak harus selalu baik-baik saja.
+Kamu tidak harus selalu tegar.
+
+Kalau kamu lelah, itu wajar.
+Kalau kamu merasa berat, itu manusiawi.
+
+Aku lihat kamu berusaha.
+Aku lihat kamu bertahan.
+Dan itu lebih dari cukup.
+
+Mas Farhan,
+kamu berharga bukan karena seberapa kuat kamu,
+tapi karena siapa kamu.
+
+Kalau kamu capek,
+aku di sini.
+`;
+
+  let i = 0;
+  const speed = 25;
+  const letterElement = document.getElementById("letterText");
+
+  function typeWriter(){
+    if(i < text.length){
+      letterElement.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  typeWriter();
+}
+</script>
+
+</body>
+</html>
